@@ -61,6 +61,7 @@ local library = {
 	rainbows = 0,
 	rainbowsg = 0
 }
+local ProtectGUI = (syn and syn.protect_gui or gethui)
 library.Subs = library.subs
 local library_flags = library.flags
 library.Flags = library_flags
@@ -520,11 +521,11 @@ function library.unload()
 	warn("Unloaded")
 end
 library.Unload = library.unload
-local Instance_new = (syn and syn.protect_gui and function(...)
+local Instance_new = (ProtectGUI and function(...)
 	local x = {Instance.new(...)}
 	if x[1] then
 		library.objects[1 + #library.objects] = x[1]
-		pcall(syn.protect_gui, x[1])
+		pcall(ProtectGUI, x[1])
 	end
 	return unpack(x)
 end) or function(...)
