@@ -61,7 +61,7 @@ local library = {
 	rainbows = 0,
 	rainbowsg = 0
 }
-local ProtectGUI = syn.protect_gui or gethui
+local ProtectGUI = protectgui or gethui or (syn and syn.protect_gui) or (function() end);
 library.Subs = library.subs
 local library_flags = library.flags
 library.Flags = library_flags
