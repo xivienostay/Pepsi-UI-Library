@@ -61,7 +61,7 @@ local library = {
 	rainbows = 0,
 	rainbowsg = 0
 }
-local ProtectGUI = (syn and syn.protect_gui) or gethui
+local ProtectGUI = syn.protect_gui or gethui
 library.Subs = library.subs
 local library_flags = library.flags
 library.Flags = library_flags
